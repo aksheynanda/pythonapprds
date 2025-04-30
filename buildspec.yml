@@ -1,8 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    IMAGE_TAG: "latest"
 
 phases:
   pre_build:
@@ -17,7 +14,7 @@ phases:
   post_build:
     commands:
       - echo "Pushing Docker image to ECR..."
-      - docker push $ECR_REPOSITORY:$IMAGE_TAG
+      - docker push $ECR_REPOSITORY:latest
       - echo "Writing image definitions file..."
 
 artifacts:
