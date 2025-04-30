@@ -8,13 +8,15 @@ phases:
   pre_build:
     commands:
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REPOSITORY
-      - cd $CODEBUILD_SRC_DIR
   build:
     commands:
+      - pwd
+      - ls -lstr
       - docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
   post_build:
     commands:
       - docker push $ECR_REPOSITORY:latest
+
 artifacts:
   files:
     - imagedefinitions.json
