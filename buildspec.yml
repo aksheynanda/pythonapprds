@@ -1,5 +1,8 @@
 version: 0.2
 
+env:
+  variables:
+    IMAGE_TAG: "latest"
 
 phases:
   pre_build:
