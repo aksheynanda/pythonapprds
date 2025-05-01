@@ -6,7 +6,7 @@ from utils import get_secret
 app = Flask(__name__)
 
 # Load secrets
-rds = get_secret("my-rds-secret")
+rds = get_secret("rds_secret")
 rds_conn = psycopg2.connect(
     host=rds["host"],
     database=rds["dbname"],
@@ -17,7 +17,7 @@ rds_conn = psycopg2.connect(
 cursor = rds_conn.cursor()
 
 # Redis connection
-redis_secret = get_secret("my-redis-secret")
+redis_secret = get_secret("redis-auth-token")
 r = redis.Redis(
     host=redis_secret["host"],
     port=redis_secret["port"],
